@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masjid Al-Ikhlas</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+      :root {
+        --primary: #16a34a; /* Hijau utama */
+        --bg: #063d2d; /* Hijau tua elegan (pengganti #010101) */
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--bg);
+        color: #fff;
+      }
+
+      /* Navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgba(1, 1, 1, 0.8);
+        border-bottom: 1px solid #2d5a3d;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+      }
+
+      .navbar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        font-style: italic;
+      }
+
+      .navbar .navbar-logo span {
+        color: var(--primary);
+      }
+
+      .navbar .navbar-nav a {
+        color: #fff;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+      }
+
+      .navbar .navbar-nav a:hover {
+        color: var(--primary);
+      }
+
+      .navbar .navbar-nav a::after {
+        content: "";
+        display: block;
+        padding-bottom: 0.5rem;
+        border-bottom: 0.1rem solid var(--primary);
+        transform: scaleX(0);
+        transition: 0.2s linear;
+      }
+
+      .navbar .navbar-nav a:hover::after {
+        transform: scaleX(0.5);
+      }
+
+      .navbar .navbar-extra a {
+        color: #fff;
+        margin: 0 0.5rem;
+      }
+
+      .navbar .navbar-extra a:hover {
+        color: var(--primary);
+      }
+
+      #hamburger-menu {
+        display: none;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url("https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=1200");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        -webkit-mask-image: linear-gradient(
+          rgba(0, 0, 0, 1) 85%,
+          rgba(0, 0, 0, 0)
+        );
+        mask-image: linear-gradient(rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0));
+      }
+
+      .hero .content {
+        padding: 1.4rem 7%;
+        width: 100%;
+        text-align: center;
+        margin-top: 130px;
+      }
+
+      .hero .content h1 {
+        font-size: 5em;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+        line-height: 1.2;
+      }
+
+      .hero .content h1 span {
+        color: var(--primary);
+      }
+
+      .hero .content p {
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        line-height: 1.4;
+        font-weight: 100;
+        text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+        mix-blend-mode: difference;
+      }
+
+      /* About Section */
+      .about,
+      .activities,
+      .schedule,
+      .contact {
+        padding: 8rem 7% 1.4rem;
+      }
+
+      .about h2,
+      .activities h2,
+      .schedule h2,
+      .contact h2 {
+        text-align: center;
+        font-size: 2.6rem;
+        margin-bottom: 3rem;
+      }
+
+      .about h2 span,
+      .activities h2 span,
+      .schedule h2 span,
+      .contact h2 span {
+        color: var(--primary);
+      }
+
+      .about .row {
+        display: flex;
+      }
+
+      .about .row .about-img {
+        flex: 1 1 45rem;
+      }
+
+      .about .row .about-img img {
+        width: 100%;
+        border-radius: 1rem;
+      }
+
+      .about .row .content {
+        flex: 1 1 35rem;
+        padding: 0 1rem;
+      }
+
+      .about .row .content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .about .row .content p {
+        margin-bottom: 0.8rem;
+        font-size: 1.3rem;
+        font-weight: 100;
+        line-height: 1.6;
+      }
+
+      /* Activities Section */
+      .activities h2,
+      .schedule h2,
+      .contact h2 {
+        margin-bottom: 1rem;
+      }
+
+      .activities p,
+      .contact p {
+        text-align: center;
+        max-width: 30rem;
+        margin: auto;
+        font-weight: 100;
+        line-height: 1.6;
+      }
+
+      .activities .row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        gap: 1.5rem;
+        margin-top: 5rem;
+      }
+
+      .activities .activity-card {
+        text-align: center;
+        border: 1px solid #666;
+        padding: 2rem;
+        transition: transform 0.3s;
+      }
+
+      .activities .activity-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+      }
+
+      .activities .activity-card-img {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .activities .activity-card-content h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary);
+      }
+
+      .activities .activity-card-content p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      /* Schedule Section */
+      .schedule-table {
+        max-width: 800px;
+        margin: 3rem auto 0;
+        background-color: #222;
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .schedule-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .schedule-table th,
+      .schedule-table td {
+        padding: 1.5rem;
+        text-align: left;
+        font-size: 1.3rem;
+      }
+
+      .schedule-table th {
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .schedule-info {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+      }
+
+      .schedule-info p {
+        margin: 0.5rem 0;
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      .schedule-next-prayer {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: #1a1a1a;
+        border-radius: 0.5rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .schedule-next-prayer p {
+        font-size: 1.3rem;
+        color: var(--primary);
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .schedule-table tr.active-prayer {
+        background-color: rgba(22, 163, 74, 0.2) !important;
+        border-left: 4px solid var(--primary);
+      }
+
+      .schedule-table tr.active-prayer td {
+        font-weight: bold;
+      }
+
+      /* Contact Section */
+      .contact .row {
+        display: flex;
+        margin-top: 2rem;
+        background-color: #222;
+      }
+
+      .contact .row .map {
+        flex: 1 1 45rem;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .contact .row form {
+        flex: 1 1 45rem;
+        padding: 5rem 2rem;
+        text-align: center;
+      }
+
+      .contact .row form .input-group {
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+        background-color: var(--bg);
+        border: 1px solid #eee;
+        padding-left: 2rem;
+      }
+
+      .contact .row form .input-group input,
+      .contact .row form .input-group textarea {
+        width: 100%;
+        padding: 2rem;
+        font-size: 1.7rem;
+        background: none;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .contact .row form .input-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .contact .row form .btn {
+        margin-top: 3rem;
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-size: 1.7rem;
+        color: #fff;
+        background-color: var(--primary);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .contact .row form .btn:hover {
+        background-color: #22c55e;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary);
+        text-align: center;
+        padding: 1rem 0 3rem;
+        margin-top: 3rem;
+      }
+
+      footer .socials {
+        padding: 1rem 0;
+      }
+
+      footer .socials a {
+        color: #fff;
+        margin: 1rem;
+      }
+
+      footer .socials a:hover,
+      footer .links a:hover {
+        color: var(--bg);
+      }
+
+      footer .links {
+        margin-bottom: 1.4rem;
+      }
+
+      footer .links a {
+        color: #fff;
+        padding: 0.7rem 1rem;
+      }
+
+      footer .credit {
+        font-size: 0.8rem;
+      }
+
+      footer .credit a {
+        color: var(--bg);
+        font-weight: 700;
+      }
+
+      /* Media Queries */
+      /* Laptop */
+      @media (max-width: 1366px) {
+        html {
+          font-size: 75%;
+        }
+      }
+
+      /* Tablet */
+      @media (max-width: 758px) {
+        html {
+          font-size: 62.5%;
+        }
+
+        #hamburger-menu {
+          display: inline-block;
+        }
+
+        .navbar .navbar-nav {
+          position: absolute;
+          top: 100%;
+          right: -100%;
+          background-color: #fff;
+          width: 30rem;
+          height: 100vh;
+          transition: 0.3s;
+        }
+
+        .navbar .navbar-nav.active {
+          right: 0;
+        }
+
+        .navbar .navbar-nav a {
+          color: var(--bg);
+          display: block;
+          margin: 1.5rem;
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
+
+        .navbar .navbar-nav a::after {
+          transform-origin: 0 0;
+        }
+
+        .navbar .navbar-nav a:hover::after {
+          transform: scaleX(0.2);
+        }
+
+        .about .row {
+          flex-wrap: wrap;
+        }
+
+        .about .row .about-img img {
+          height: 24rem;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        .about .row .content {
+          padding: 0;
+        }
+
+        .about .row .content h3 {
+          margin-top: 1rem;
+          font-size: 2rem;
+        }
+
+        .about .row .content p {
+          font-size: 1.6rem;
+        }
+
+        .activities p {
+          font-size: 1.2rem;
+        }
+
+        .contact .row {
+          flex-wrap: wrap;
+        }
+
+        .contact .row .map {
+          height: 30rem;
+        }
+
+        .contact .row form {
+          padding-top: 0;
+        }
+      }
+
+      /* Mobile Phone */
+      @media (max-width: 450px) {
+        html {
+          font-size: 55%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">Masjid <span>Darul Muflihin</span></a>
+
+      <div class="navbar-nav">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#activities">Kegiatan</a>
+        <a href="#schedule">Jadwal Sholat</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <!-- Hero Section start -->
+    <section class="hero" id="home">
+      <div class="content">
+        <h1>Selamat Datang di <span>Masjid Darul Muflihin</span></h1>
+        <p>
+          Rumah bagi setiap muslim untuk beribadah, belajar, dan mempererat
+          ukhuwah islamiyah. Mari bersama-sama memakmurkan masjid Allah.
+        </p>
+      </div>
+    </section>
+    <!-- Hero Section end -->
+
+    <!-- About Section start -->
+    <section id="about" class="about">
+      <h2><span>Tentang</span> Masjid Kami</h2>
+
+      <div class="row">
+        <div class="about-img">
+          <img
+            src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600"
+            alt="Masjid"
+          />
+        </div>
+        <div class="content">
+          <h3>Masjid Darul Muflihin</h3>
+          <p>
+            Masjid Darul Muflihin berdiri sejak tahun 1985 sebagai pusat
+            kegiatan keagamaan masyarakat muslim di wilayah Makassar. Dengan
+            kapasitas hingga 500 jamaah, masjid ini telah menjadi saksi
+            perjalanan spiritual ribuan umat muslim selama hampir 4 dekade.
+          </p>
+          <p>
+            Kami berkomitmen untuk menyediakan tempat ibadah yang nyaman,
+            bersih, dan kondusif bagi seluruh jamaah. Selain sebagai tempat
+            sholat lima waktu, masjid kami juga aktif menyelenggarakan berbagai
+            kegiatan dakwah, pendidikan Islam, dan pembinaan umat.
+          </p>
+          <p>
+            Dengan fasilitas yang memadai termasuk area wudhu terpisah untuk
+            pria dan wanita, perpustakaan Islam, dan ruang serbaguna, kami
+            berupaya menjadi pusat kegiatan keislaman yang bermanfaat bagi
+            masyarakat sekitar.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- About Section end -->
+
+    <!-- Activities Section start -->
+    <section id="activities" class="activities">
+      <h2><span>Kegiatan</span> Masjid</h2>
+      <p>
+        Berbagai kegiatan keagamaan dan sosial yang rutin dilaksanakan untuk
+        memakmurkan masjid dan membina umat
+      </p>
+
+      <div class="row">
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=400"
+            alt="Kajian"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">Kajian Rutin</h3>
+            <p class="activity-card-desc">
+              Kajian Islam setiap Jumat malam dengan tema yang bervariasi,
+              dipandu oleh ustadz kompeten
+            </p>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=400"
+            alt="TPA"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">TPA & TPQ</h3>
+            <p class="activity-card-desc">
+              Pendidikan Al-Quran untuk anak-anak setiap sore hari dengan metode
+              pembelajaran yang menyenangkan
+            </p>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400"
+            alt="Sholat Jumat"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">Sholat Jumat</h3>
+            <p class="activity-card-desc">
+              Sholat Jumat berjamaah dengan khutbah yang inspiratif dan relevan
+              dengan kehidupan sehari-hari
+            </p>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1573152143286-0c422b4d2175?w=400"
+            alt="Ramadhan"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">Kegiatan Ramadhan</h3>
+            <p class="activity-card-desc">
+              Tarawih berjamaah, tadarus Al-Quran, dan berbagai kegiatan spesial
+              di bulan suci Ramadhan
+            </p>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400"
+            alt="Sosial"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">Kegiatan Sosial</h3>
+            <p class="activity-card-desc">
+              Santunan anak yatim, bantuan untuk fakir miskin, dan berbagai
+              program kepedulian sosial lainnya
+            </p>
+          </div>
+        </div>
+        <div class="activity-card">
+          <img
+            src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400"
+            alt="Konseling"
+            class="activity-card-img"
+          />
+          <div class="activity-card-content">
+            <h3 class="activity-card-title">Konseling Keluarga</h3>
+            <p class="activity-card-desc">
+              Layanan konseling dan bimbingan keluarga islami untuk membangun
+              keluarga sakinah mawaddah warahmah
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Activities Section end -->
+
+    <!-- Schedule Section start -->
+    <section id="schedule" class="schedule">
+      <h2><span>Jadwal</span> Sholat</h2>
+
+      <div class="schedule-info">
+        <p id="schedule-location">📍 Makassar, Sulawesi Selatan</p>
+        <p id="schedule-date">📅 Loading...</p>
+      </div>
+
+      <div class="schedule-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Waktu Sholat</th>
+              <th>Adzan</th>
+              <th>Iqomah</th>
+            </tr>
+          </thead>
+          <tbody id="prayer-times-body">
+            <tr>
+              <td>Subuh</td>
+              <td id="fajr-time">Loading...</td>
+              <td id="fajr-iqomah">-</td>
+            </tr>
+            <tr>
+              <td>Dzuhur</td>
+              <td id="dhuhr-time">Loading...</td>
+              <td id="dhuhr-iqomah">-</td>
+            </tr>
+            <tr>
+              <td>Ashar</td>
+              <td id="asr-time">Loading...</td>
+              <td id="asr-iqomah">-</td>
+            </tr>
+            <tr>
+              <td>Maghrib</td>
+              <td id="maghrib-time">Loading...</td>
+              <td id="maghrib-iqomah">-</td>
+            </tr>
+            <tr>
+              <td>Isya</td>
+              <td id="isha-time">Loading...</td>
+              <td id="isha-iqomah">-</td>
+            </tr>
+            <tr>
+              <td><strong>Jumat</strong></td>
+              <td colspan="2">
+                <strong id="jumat-time">12:00 - 13:00</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="schedule-next-prayer">
+        <p id="next-prayer-info">⏰ Menghitung waktu sholat berikutnya...</p>
+      </div>
+    </section>
+    <!-- Schedule Section end -->
+
+    <!-- Contact Section start -->
+    <section id="contact" class="contact">
+      <h2><span>Kontak</span> Kami</h2>
+      <p>
+        Hubungi kami untuk informasi lebih lanjut tentang kegiatan masjid,
+        donasi, atau hal lainnya. Kami siap melayani Anda.
+      </p>
+
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.8693902615887!2d119.4970305747418!3d-5.124737494852379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefca4a96dacbd%3A0x6ec78d68a6d5b53e!2sMasjid%20Darul%20Muflihin%20NTI!5e0!3m2!1sen!2sid!4v1764161897499!5m2!1sen!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="map"
+        ></iframe>
+
+        <form action="">
+          <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" placeholder="Nama Lengkap" required />
+          </div>
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="email" placeholder="Email" required />
+          </div>
+          <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="tel" placeholder="No. Telepon" required />
+          </div>
+          <div class="input-group">
+            <i data-feather="message-square"></i>
+            <textarea placeholder="Pesan Anda" required></textarea>
+          </div>
+          <button type="submit" class="btn">Kirim Pesan</button>
+        </form>
+      </div>
+    </section>
+    <!-- Contact Section end -->
+
+    <!-- Footer start -->
+    <footer>
+      <div class="socials">
+        <a href="#"><i data-feather="instagram"></i></a>
+        <a href="#"><i data-feather="facebook"></i></a>
+        <a href="#"><i data-feather="youtube"></i></a>
+      </div>
+
+      <div class="links">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#activities">Kegiatan</a>
+        <a href="#schedule">Jadwal Sholat</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="credit">
+        <p>
+          Masjid Darul Muflihin NTI Makassar | &copy; 2025. Semua Hak Dilindungi
+        </p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- My Javascript -->
+    <script>
+      // ========== JADWAL SHOLAT API ==========
+      // Konfigurasi lokasi (bisa diubah sesuai kota)
+      const CITY_ID = "2622"; // Kode untuk Makassar (lihat daftar di bawah)
+      const IQOMAH_DELAY = 15; // Delay iqomah dalam menit setelah adzan
+
+      // Daftar kode kota di Indonesia:
+      // 0101: Banda Aceh, 0201: Medan, 0301: Padang, 0401: Pekanbaru
+      // 0501: Jambi, 0502: Palembang, 0503: Makassar, 0601: Lampung
+      // 1101: Jakarta, 1201: Bandung, 1301: Semarang, 1401: Yogyakarta
+      // 1501: Surabaya, 1601: Denpasar, dan lainnya
+
+      let prayerTimesData = {};
+
+      // Fungsi untuk mengambil jadwal sholat dari API
+      async function fetchPrayerTimes() {
+        try {
+          const now = new Date();
+          const year = now.getFullYear();
+          const month = String(now.getMonth() + 1).padStart(2, "0");
+          const day = String(now.getDate()).padStart(2, "0");
+
+          // API dari Kementerian Agama RI
+          const apiUrl = `https://api.myquran.com/v2/sholat/jadwal/${CITY_ID}/${year}/${month}/${day}`;
+
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          fetch(apiUrl)
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data); // 👈 untuk cek semua isi respons API
+            });
+
+          if (data.status && data.data && data.data.jadwal) {
+            const jadwal = data.data.jadwal;
+            prayerTimesData = {
+              fajr: jadwal.subuh,
+              dhuhr: jadwal.dzuhur,
+              asr: jadwal.ashar,
+              maghrib: jadwal.maghrib,
+              isha: jadwal.isya,
+            };
+
+            updatePrayerTimesDisplay();
+            updateDateDisplay(data.data);
+          } else {
+            throw new Error("Data tidak valid");
+          }
+        } catch (error) {
+          console.error("Error fetching prayer times:", error);
+          // Fallback ke jadwal default jika API gagal
+          setDefaultPrayerTimes();
+        }
+      }
+
+      // Fungsi untuk menampilkan jadwal di tabel
+      function updatePrayerTimesDisplay() {
+        // Update waktu adzan
+        document.getElementById("fajr-time").textContent = prayerTimesData.fajr;
+        document.getElementById("dhuhr-time").textContent =
+          prayerTimesData.dhuhr;
+        document.getElementById("asr-time").textContent = prayerTimesData.asr;
+        document.getElementById("maghrib-time").textContent =
+          prayerTimesData.maghrib;
+        document.getElementById("isha-time").textContent = prayerTimesData.isha;
+
+        // Hitung dan update waktu iqomah (adzan + delay)
+        document.getElementById("fajr-iqomah").textContent = addMinutes(
+          prayerTimesData.fajr,
+          IQOMAH_DELAY
+        );
+        document.getElementById("dhuhr-iqomah").textContent = addMinutes(
+          prayerTimesData.dhuhr,
+          IQOMAH_DELAY
+        );
+        document.getElementById("asr-iqomah").textContent = addMinutes(
+          prayerTimesData.asr,
+          IQOMAH_DELAY
+        );
+        document.getElementById("maghrib-iqomah").textContent = addMinutes(
+          prayerTimesData.maghrib,
+          10
+        ); // Maghrib lebih cepat
+        document.getElementById("isha-iqomah").textContent = addMinutes(
+          prayerTimesData.isha,
+          IQOMAH_DELAY
+        );
+
+        // Highlight waktu sholat yang aktif
+        highlightCurrentPrayer();
+
+        // Update info sholat berikutnya
+        updateNextPrayerInfo();
+      }
+
+      // Fungsi untuk menambahkan menit ke waktu
+      function addMinutes(time, minutes) {
+        const [hours, mins] = time.split(":").map(Number);
+        const date = new Date();
+        date.setHours(hours, mins + minutes);
+        return date.toTimeString().slice(0, 5);
+      }
+
+      // Fungsi untuk update tanggal
+      function updateDateDisplay(data) {
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const dateStr = new Date().toLocaleDateString("id-ID", options);
+
+        document.getElementById("schedule-date").textContent = `📅 ${dateStr}`;
+
+        if (data.lokasi) {
+          document.getElementById(
+            "schedule-location"
+          ).textContent = `📍 ${data.lokasi}`;
+        }
+      }
+
+      // Fungsi untuk highlight waktu sholat yang sedang aktif
+      function highlightCurrentPrayer() {
+        const now = new Date();
+        const currentTime = now.getHours() * 60 + now.getMinutes();
+
+        const prayers = [
+          { name: "fajr", time: prayerTimesData.fajr, element: 0 },
+          { name: "dhuhr", time: prayerTimesData.dhuhr, element: 1 },
+          { name: "asr", time: prayerTimesData.asr, element: 2 },
+          { name: "maghrib", time: prayerTimesData.maghrib, element: 3 },
+          { name: "isha", time: prayerTimesData.isha, element: 4 },
+        ];
+
+        const rows = document.querySelectorAll("#prayer-times-body tr");
+
+        // Remove all active classes first
+        rows.forEach((row) => row.classList.remove("active-prayer"));
+
+        for (let i = 0; i < prayers.length; i++) {
+          const prayer = prayers[i];
+          const nextPrayer = prayers[i + 1];
+
+          const [hours, mins] = prayer.time.split(":").map(Number);
+          const prayerTime = hours * 60 + mins;
+
+          let nextPrayerTime;
+          if (nextPrayer) {
+            const [nextHours, nextMins] = nextPrayer.time
+              .split(":")
+              .map(Number);
+            nextPrayerTime = nextHours * 60 + nextMins;
+          } else {
+            nextPrayerTime = 24 * 60; // End of day
+          }
+
+          if (currentTime >= prayerTime && currentTime < nextPrayerTime) {
+            rows[prayer.element].classList.add("active-prayer");
+            break;
+          }
+        }
+      }
+
+      // Fungsi untuk update info sholat berikutnya
+      function updateNextPrayerInfo() {
+        const now = new Date();
+        const currentTime = now.getHours() * 60 + now.getMinutes();
+
+        const prayers = [
+          { name: "Subuh", time: prayerTimesData.fajr },
+          { name: "Dzuhur", time: prayerTimesData.dhuhr },
+          { name: "Ashar", time: prayerTimesData.asr },
+          { name: "Maghrib", time: prayerTimesData.maghrib },
+          { name: "Isya", time: prayerTimesData.isha },
+        ];
+
+        let nextPrayer = null;
+        let timeUntil = "";
+
+        for (const prayer of prayers) {
+          const [hours, mins] = prayer.time.split(":").map(Number);
+          const prayerTime = hours * 60 + mins;
+
+          if (prayerTime > currentTime) {
+            nextPrayer = prayer;
+            const diff = prayerTime - currentTime;
+            const hoursLeft = Math.floor(diff / 60);
+            const minsLeft = diff % 60;
+
+            if (hoursLeft > 0) {
+              timeUntil = `${hoursLeft} jam ${minsLeft} menit`;
+            } else {
+              timeUntil = `${minsLeft} menit`;
+            }
+            break;
+          }
+        }
+
+        if (nextPrayer) {
+          document.getElementById(
+            "next-prayer-info"
+          ).textContent = `⏰ Waktu sholat berikutnya: ${nextPrayer.name} dalam ${timeUntil} (${nextPrayer.time})`;
+        } else {
+          document.getElementById(
+            "next-prayer-info"
+          ).textContent = `⏰ Waktu sholat berikutnya: Subuh besok (${prayerTimesData.fajr})`;
+        }
+      }
+
+      // Fallback jika API gagal
+      function setDefaultPrayerTimes() {
+        prayerTimesData = {
+          fajr: "04:30",
+          dhuhr: "12:00",
+          asr: "15:15",
+          maghrib: "18:05",
+          isha: "19:15",
+        };
+        updatePrayerTimesDisplay();
+
+        const now = new Date();
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        document.getElementById(
+          "schedule-date"
+        ).textContent = `📅 ${now.toLocaleDateString("id-ID", options)}`;
+      }
+
+      // Update setiap menit
+      setInterval(() => {
+        highlightCurrentPrayer();
+        updateNextPrayerInfo();
+      }, 60000); // Update setiap 1 menit
+
+      // Load jadwal saat halaman dibuka
+      fetchPrayerTimes();
+
+      // Refresh jadwal setiap jam
+      setInterval(fetchPrayerTimes, 3600000); // Update setiap 1 jam
+
+      // ========== NAVIGATION & UI ==========
+      // Toggle class active untuk hamburger menu
+      const navbarNav = document.querySelector(".navbar-nav");
+      const hm = document.querySelector("#hamburger-menu");
+
+      // ketika hamburger menu di klik
+      hm.onclick = (e) => {
+        navbarNav.classList.toggle("active");
+        e.preventDefault();
+      };
+
+      // Klik di luar elemen
+      document.addEventListener("click", function (e) {
+        if (!hm.contains(e.target) && !navbarNav.contains(e.target)) {
+          navbarNav.classList.remove("active");
+        }
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const href = this.getAttribute("href");
+          if (href !== "#") {
+            e.preventDefault();
+            navbarNav.classList.remove("active");
+
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          }
+        });
+      });
+
+      // Form submission handler
+      const contactForm = document.querySelector(".contact form");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Ambil data form
+          const formData = {
+            nama: this.querySelector('input[type="text"]').value,
+            email: this.querySelector('input[type="email"]').value,
+            telp: this.querySelector('input[type="tel"]').value,
+            pesan: this.querySelector("textarea").value,
+          };
+
+          // Simulasi pengiriman (bisa diganti dengan AJAX request)
+          alert(
+            "Terima kasih! Pesan Anda telah dikirim.\n\nNama: " + formData.nama
+          );
+
+          // Reset form
+          this.reset();
+        });
+      }
+
+      // Animasi fade in saat scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe semua activity cards
+      document.querySelectorAll(".activity-card").forEach((card) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(card);
+      });
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      const navbar = document.querySelector(".navbar");
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+          navbar.style.boxShadow = "none";
+        } else {
+          navbar.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.3)";
+        }
+
+        lastScroll = currentScroll;
+      });
+
+      // Active nav link berdasarkan scroll position
+      window.addEventListener("scroll", () => {
+        let current = "";
+        const sections = document.querySelectorAll("section");
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        document.querySelectorAll(".navbar-nav a").forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
